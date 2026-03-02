@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-100: #DCFCE7;
+  --color-blue-500: #047857;
+}
+
+@layer base {
+  body {
+    @apply font-poppins text-gray-700;
+  }
+  span, a {
+    @apply inline-block;
+  }
+  button, a {
+    @apply cursor-pointer;
+  }
+}
+
+@utility btn {
+  @apply px-4 py-2 rounded-lg bg-gray-200 text-gray-900 font-semibold;
+}
+
+@utility form-control {
+  @apply px-3 py-2 rounded-md border border-gray-400/40 focus:outline-none focus:border-primary-600;
+}
+
+@utility container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+
+.swiper-pagination {
+  position: absolute !important;
+  bottom: 30px !important; 
+  left: 0;
+  width: 100% !important;
+  background: transparent !important; 
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px;
+  z-index: 50 !important;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  opacity: 1 !important;
+  margin: 0 !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: white !important;
+  width: 30px !important; 
+  border-radius: 10px !important;
+}
