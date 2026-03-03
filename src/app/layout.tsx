@@ -12,11 +12,19 @@ import Providers from "@/components/providers/providers";
 import { verifyToken } from "@/features/auth/server/auth.actions";
 import { getLoggedUserCart } from "@/features/cart/server/cart.actions";
 import { CartState } from "@/features/cart/store/cart.slice";
+import { WishlistState } from "../features/wishlist/slice/wishlist.slice"; 
+
 const exo = Exo({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-exo",
 });
+let defaultWishlistState: WishlistState = {
+  numOfWishlistItems: 0,
+  products: [],
+  isLoading: false,
+  error: null,
+};
 
 let defaultCartState: CartState = {
   cartId: null,
@@ -32,6 +40,7 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  let wishlistState = defaultWishlistState;
   const authValues = await verifyToken();
 
   let cartState = defaultCartState
@@ -52,10 +61,12 @@ export default async function RootLayout({
     }
   }
 
+  
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${exo.className} font-medium`}>
-        <Providers preloadedState={{ auth: authValues , cart: cartState }}>
+        <Providers preloadedState={{ auth: authValues , cart: cartState , wishlist: wishlistState }}>
           <Navbar />
           {children}
           <Footer />
