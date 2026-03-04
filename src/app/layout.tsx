@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import "../styles/globals.css";
-import Navbar from "@/components/shared/Navbar";
+import Navbar from "../components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import "@fortawesome/fontawesome-svg-core/styles";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -13,6 +13,7 @@ import { verifyToken } from "@/features/auth/server/auth.actions";
 import { getLoggedUserCart } from "@/features/cart/server/cart.actions";
 import { CartState } from "@/features/cart/store/cart.slice";
 import { WishlistState } from "../features/wishlist/slice/wishlist.slice"; 
+import { getLoggedUserWishlist } from "@/features/wishlist/servers/wishlist.actioms";
 
 const exo = Exo({
   subsets: ["latin"],
@@ -45,27 +46,35 @@ export default async function RootLayout({
 
   let cartState = defaultCartState
 
-  if (authValues.isAuthenticated) {
-    try {
-      const cartResponse = await getLoggedUserCart();
-      cartState = {
-        cartId: cartResponse.cartId ,
-        numOfCartItems: cartResponse.numOfCartItems ,
-        totalCartPrice:  cartResponse.data.totalCartPrice ,
-        products: cartResponse.data.products,
-        error: null,
-        isLoading: false,
-      };
-    } catch (error) {
-      cartState = defaultCartState
-    }
-  }
+if (authValues.isAuthenticated) {
+  try {
+    const cartResponse = await getLoggedUserCart();
+    cartState = {
+      cartId: cartResponse.cartId,
+      numOfCartItems: cartResponse.numOfCartItems,
+      totalCartPrice: cartResponse.data.totalCartPrice,
+      products: cartResponse.data.products,
+      error: null,
+      isLoading: false,
+    };
 
+    const wishlistResponse = await getLoggedUserWishlist(); 
+    wishlistState = {
+      ...defaultWishlistState,
+      products: wishlistResponse.data,
+      numOfWishlistItems: wishlistResponse.count || wishlistResponse.data.length || 0,
+    };
+
+  } catch (error) {
+    cartState = defaultCartState;
+    wishlistState = defaultWishlistState;
+  }
+}
   
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${exo.className} font-medium`}>
+    <html lang="en" suppressHydrationWarning  data--h-bstatus="0OBSERVED">
+      <body className={`${exo.className} font-medium`}  data--h-bstatus="0OBSERVED">
         <Providers preloadedState={{ auth: authValues , cart: cartState , wishlist: wishlistState }}>
           <Navbar />
           {children}

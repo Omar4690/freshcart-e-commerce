@@ -45,6 +45,8 @@ export default async function OurCategories() {
                   src={category.image}
                   alt={category.name}
                   className="object-contain group-hover:scale-110 transition-transform duration-300"
+                  data--h-bstatus="5PROCESSED"
+                  data--h-bresult="clear"
                 />
               </div>
               <h3 className="font-bold text-gray-700 text-sm group-hover:text-emerald-600 truncate">

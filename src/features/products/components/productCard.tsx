@@ -99,7 +99,7 @@ export default function productCard({ info }: { info: Product }) {
             </Link>
           </div>
           <h3 className="font-medium mb-1 cursor-pointer">
-            <Link className="line-clamp-2" href={``}>
+            <Link className="line-clamp-2 hover:text-emerald-600 transition-colors" href={`/products/${id}`}>
               {title}
             </Link>
           </h3>

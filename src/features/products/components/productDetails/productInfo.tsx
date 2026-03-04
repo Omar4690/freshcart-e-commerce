@@ -81,10 +81,10 @@ export default function ProductInfo({
   return (
     <section id="product-detail" className="py-6">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
-          <div id="product-images" className="w-full lg:w-1/4">
-            <div className="bg-white rounded-xl shadow-sm p-4 sticky top-4">
-              <ImageGallery
+        <div className="flex sm:flex-col lg:flex-row gap-8 items-start">
+          <div id="product-images" className="w-full w-1/4 ">
+            <div className="bg-white rounded-xl shadow-sm p-4 sticky top-4 lg:flex-row">
+              <ImageGallery 
                 items={images.map((image) => ({
                   original: image,
                   thumbnail: image,
@@ -92,16 +92,19 @@ export default function ProductInfo({
                 showFullscreenButton={false}
                 showNav={false}
                 showPlayButton={false}
+                data--h-bstatus="5PROCESSED"
+                data--h-bresult="clear"
+                
               />
             </div>
           </div>
 
-          <div id="product-info" className="w-full lg:w-3/4">
+          <div id="product-info" className="w-full w-3/4 ">
             <div className="bg-white rounded-xl shadow-sm p-6">
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap lg:flex-row gap-2 mb-4">
                 <Link
                   href={""}
-                  className="bg-primary-50 text-primary-700 text-xs px-3 py-1.5 rounded-full hover:bg-primary-100 transition"
+                  className="bg-primary-50 lg:flex-row text-primary-700 text-xs px-3 py-1.5 rounded-full hover:bg-primary-100 transition"
                 >
                   {category.name}
                 </Link>
@@ -240,7 +243,7 @@ export default function ProductInfo({
               </div>
               {/* Trust Badges */}
               <div className="border-t border-gray-100 pt-6 ">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex justify-items-center ">
+                <div className="grid sm:grid-cols-3 gap-4 flex justify-items-center ">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 bg-emerald-100 text-primary-600 rounded-full flex items-center justify-center">
                       <FontAwesomeIcon icon={faTruckFast} />

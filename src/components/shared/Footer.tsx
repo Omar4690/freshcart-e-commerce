@@ -54,7 +54,7 @@ export default function Footer() {
           {/* 2. Company Info */}
           <div className="lg:col-span-2">
             <div className="bg-white inline-block p-2 rounded-lg mb-6">
-              <Image src={logo} alt="FreshCart" width={140} height={35} />
+              <Image src={logo} alt="FreshCart" width={140} height={35} className={undefined}  data--h-bstatus="0OBSERVED"/>
             </div>
             <p className="text-sm leading-relaxed mb-6 max-w-sm">
               FreshCart is your one-stop destination for quality products. From

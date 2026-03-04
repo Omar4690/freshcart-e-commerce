@@ -12,6 +12,7 @@ export default function CategoryCard({ category }: { category: Category }) {
           src={category.image}
           alt={category.name}
           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+          data--h-bstatus="5PROCESSED"
         />
       </div>
       <h3 className="font-bold text-gray-800 text-lg group-hover:text-[#2ecc71] transition-colors">

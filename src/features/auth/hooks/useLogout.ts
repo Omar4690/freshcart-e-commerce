@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { clearToken } from "../server/auth.actions"
-import { setAuthInfo } from "../store/auth.slice";
+import { logoutAction, setAuthInfo } from "../store/auth.slice";
 import { useRouter } from "next/navigation";
 
 export default function useLogout(){
@@ -10,7 +10,8 @@ export default function useLogout(){
     const logout = async ()=> {
         await clearToken();
 
-        dispatch(setAuthInfo({ isAuthenticated: false , userInfo: null}));
+        // dispatch(setAuthInfo({ isAuthenticated: false , userInfo: null}));
+        dispatch(logoutAction());
 
         router.push("/login");
         router.refresh();

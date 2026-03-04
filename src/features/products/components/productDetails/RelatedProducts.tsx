@@ -1,10 +1,12 @@
-
 "use client";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -13,12 +15,12 @@ import { getRelatedProducts } from "../../servers/products.actions";
 import ProductCard from "../productCard";
 import { Product } from "../../types/products.types";
 
-export default function RelatedProducts({ 
-  categoryId, 
-  currentProductId 
-}: { 
-  categoryId: string; 
-  currentProductId: string 
+export default function RelatedProducts({
+  categoryId,
+  currentProductId,
+}: {
+  categoryId: string;
+  currentProductId: string;
 }) {
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -34,7 +36,7 @@ export default function RelatedProducts({
   if (products.length === 0) return null;
 
   return (
-    <div className="mt-16 relative">
+    <div className="mt-16 relative ">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-2">
           <div className="w-1.5 h-8 bg-primary-600 rounded-full"></div>
@@ -60,16 +62,15 @@ export default function RelatedProducts({
           prevEl: ".related-prev",
           nextEl: ".related-next",
         }}
-        spaceBetween={20}
+        spaceBetween={20} // Added spacing so they aren't touching
         slidesPerView={1}
         breakpoints={{
           640: { slidesPerView: 2 },
           768: { slidesPerView: 3 },
           1024: { slidesPerView: 4 },
-          1280: { slidesPerView: 5 }, 
+          1280: { slidesPerView: 5 },
         }}
-       
-        className="pb-4"
+        className="mySwiper" // Change this if the 'pb-4' class is causing issues
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>

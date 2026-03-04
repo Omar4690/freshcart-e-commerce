@@ -56,7 +56,7 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ ca
         </h2>
 
         {/* Subcategories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid lg:grid-cols-4 gap-6">
           {subcategories.map((sub: any) => (
             <Link
               key={sub._id}

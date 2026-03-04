@@ -51,7 +51,7 @@ export default async function ProductsPage({
           <div className="flex items-center gap-6">
             <div className="size-15 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/30 overflow-hidden">
                {displayImage ? (
-                 <img src={displayImage} alt="" className="w-10 h-10 object-contain" />
+                 <img src={displayImage} alt="" className="w-10 h-10 object-contain" data--h-bstatus="5PROCESSED" data--h-bresult="clear"/>
                ) : (
                  <FontAwesomeIcon icon={faFolderOpen} className="text-white text-2xl" />
                )}
